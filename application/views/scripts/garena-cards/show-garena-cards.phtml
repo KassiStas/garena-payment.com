@@ -1,0 +1,71 @@
+<div class="row-fluid show-grid">
+    <div class="span12">
+        <h2>
+            <?php echo $this->text('GarenaCards') ?>
+        </h2>
+    </div>
+</div>
+<?php
+$typeSearchs = array(
+    'All' => 'All',
+    'cardno'                       => $this->text('cardno', false),
+    'password'                     => $this->text('password', false),
+    'value'                        => $this->text('value', false),
+    'days'                         => $this->text('days', false),
+    'uid'                          => $this->text('uid', false),
+    'added_time'                   => $this->text('added_time', false),
+    'status'                       => $this->text('status', false),
+    'extra'                        => $this->text('extra', false),
+    'topup_id'                     => $this->text('topup_id', false),
+);
+$buttons = array(
+    "<a class='btn btn-success btn-small'  
+        href='{$this->url(array('action' => 'add-'. $this->controller))}'>
+        <i class='icon-plus'></i>
+        Add {$this->text($this->controller)}
+    </a>"
+);
+echo $this->searchBar($typeSearchs, null, $buttons);
+
+?>
+
+
+<div class="row-fluid show-grid">
+    <div class="span12">
+        <table class="table table-striped table-bordered table-condensed">
+
+            <thead>
+                <tr>
+                    <?php $this->renderTh('cardno'); ?>
+                    <?php $this->renderTh('password'); ?>
+                    <?php $this->renderTh('value'); ?>
+                    <?php $this->renderTh('days'); ?>
+                    <?php $this->renderTh('uid'); ?>
+                    <?php $this->renderTh('added_time'); ?>
+                    <?php $this->renderTh('status'); ?>
+                    <?php $this->renderTh('extra'); ?>
+                    <?php $this->renderTh('topup_id'); ?>
+                    
+                    <th style='height:42px; line-height:42px; vertical-align:middle;'> Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php if (count($this->paginator) != 0) : ?>
+                    <?php 
+                        foreach ($this->paginator as $row){
+    
+                            echo $this->partial('garena-cards/_partial/show-garena-cards.phtml', array('dataRow'=>$row) );
+                        }
+                    ?>
+                <?php else : ?>
+                    <tr><td colspan="100"><h3>No Result</h3></td></tr>
+                <?php endif; ?>
+            </tbody>
+
+            <?php echo $this->renderPaging($this->paginator); ?>
+        </table>
+
+        <?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml'); ?>
+    </div>
+</div>

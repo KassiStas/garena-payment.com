@@ -1,0 +1,64 @@
+<?php
+$form = $this->form;
+?>
+
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="pull-right">
+			<a href="<?php echo $this->url(array('controller'=>'partners', 'action'=>'show-partners'), null, true) ?>">
+                  Back to list <?php echo $this->text('Partners'); ?>
+              </a>
+		</div>
+		<h2>
+              Update <?php echo $this->text('Partners'); ?>        
+          </h2>
+	</div>
+</div>
+
+<?php if(isset($this->isSaved)): ?>
+
+<div class="row">
+	<div class="col-md-12">
+        <?php if($this->isSaved):?>
+            <div class="alert alert-success">
+                <?php echo $this->text('Partners'); ?> saved succcessfully!
+            </div>
+        <?php else: ?>
+            <div class="alert alert-danger">
+                <?php echo $this->text('Partners'); ?> saved fail!
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>
+
+<div class="row">
+	<div class="col-md-12">
+		<form class="form-horizontal" method="post" action="">
+            <?php echo $this->renderFormElement($form->id);?>
+            <?php echo $this->renderFormElement($form->partner_code);?>
+            <?php echo $this->renderFormElement($form->partner_name);?>
+            <?php echo $this->renderFormElement($form->service_code);?>
+            <?php echo $this->renderFormElement($form->contact_name);?>
+            <?php echo $this->renderFormElement($form->contact_email);?>
+            <?php echo $this->renderFormElement($form->contact_phone);?>
+            <?php echo $this->renderFormElement($form->public_key);?>
+            <?php echo $this->renderFormElement($form->private_key);?>
+            <?php echo $this->renderFormElement($form->credit);?>
+            <?php echo $this->renderFormElement($form->status);?>
+            <div class="form-group ">
+				<label for="topup_id" class="col-lg-2 control-label">&nbsp</label>
+				<div class="col-lg-6">
+					<button type="submit" class="btn btn-primary">
+						<i class="icon-ok icon-white"></i> Submit
+					</button>
+					<button type="reset" class="btn">
+						<i class="icon-refresh"></i> Reset
+					</button>
+				</div>
+		    </div>
+		</form>
+	</div>
+</div>
+

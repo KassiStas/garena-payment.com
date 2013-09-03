@@ -1,0 +1,52 @@
+<?php 
+    $form = $this->form;
+?>
+
+<div class="row-fluid">
+    <div class="span12">
+          <div class="pull-right">
+              <a href="<?php echo $this->url(array('action'=>'show-credit-transaction')) ?>" >
+                  Back to list <?php echo $this->text('CreditTransaction'); ?>
+              </a>
+          </div>
+          <h2>
+              Add <?php echo $this->text('CreditTransaction'); ?>        
+          </h2>
+    </div>
+</div>
+
+<?php if(isset($this->isSaved)): ?>
+<div class="row">
+  <div class="col-md-12">
+        <?php if($this->isSaved):?>
+            <div class="alert alert-success">
+                <?php echo $this->text('CreditTransaction'); ?> saved succcessfully!
+            </div>
+        <?php else: ?>
+            <div class="alert alert-danger">
+                <?php echo $this->text('CreditTransaction'); ?> saved fail!
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>
+
+<div class="row">
+  <div class="col-md-12">
+    <form class="form-horizontal" role="form" method="post" action="">
+                
+                <?php echo $this->renderFormElement($form->id);?>
+                <?php echo $this->renderFormElement($form->invoice_id);?>
+                <?php echo $this->renderFormElement($form->partner_id);?>
+                <?php echo $this->renderFormElement($form->amount);?>
+                <?php echo $this->renderFormElement($form->real_revenue);?>
+                <?php echo $this->renderFormElement($form->activator);?>
+                <?php echo $this->renderFormElement($form->txn_datetime);?>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary"><i class="icon-ok icon-white"></i> Submit</button>
+                    <button type="reset" class="btn"><i class="icon-refresh"></i> Reset</button>
+                </div>
+        </form>
+    </div>
+</div>

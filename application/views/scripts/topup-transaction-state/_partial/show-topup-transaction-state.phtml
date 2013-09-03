@@ -1,0 +1,52 @@
+<?php
+/**
+ * partial loop of TopupTransactionState
+ * TopupTransactionState
+ */
+ 
+    $dataRow       = $this->dataRow;
+    
+?>
+<tr>
+    
+    <td>
+        <?php echo $dataRow->id;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->partner_id;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->gg_username;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->topup_type;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->topup_value;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->topup_partner_txnid;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->topup_datetime;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->topup_status;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->topup_response;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->ip_address;?>
+    </td>
+    
+</tr>

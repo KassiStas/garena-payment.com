@@ -1,0 +1,75 @@
+<div class="row-fluid show-grid">
+    <div class="span12">
+        <h2>
+            <?php echo $this->text('Partners') ?>
+        </h2>
+    </div>
+</div>
+<?php
+$typeSearchs = array(
+    'All' => 'All',
+    'id'                           => $this->text('id', false),
+    'partner_code'                 => $this->text('partner_code', false),
+    'partner_name'                 => $this->text('partner_name', false),
+    'service_code'                 => $this->text('service_code', false),
+    'contact_name'                 => $this->text('contact_name', false),
+    'contact_email'                => $this->text('contact_email', false),
+    'contact_phone'                => $this->text('contact_phone', false),
+    'status'                       => $this->text('status', false),
+    'public_key'                   => $this->text('public_key', false),
+    'private_key'                  => $this->text('private_key', false),
+    'credit'                       => $this->text('credit', false),
+    'created_date'                 => $this->text('created_date', false),
+    'created_by'                   => $this->text('created_by', false),
+    'ip_address'                   => $this->text('ip_address', false),
+);
+$buttons = array(
+    "<a class='btn btn-success btn-small'  
+        href='{$this->url(array('action' => 'add-'. $this->controller))}'>
+        <i class='icon-plus'></i>
+        Add {$this->text($this->controller)}
+    </a>"
+);
+echo $this->searchBar($typeSearchs, null, $buttons);
+
+?>
+
+
+<div class="row-fluid show-grid">
+    <div class="span12">
+        <table class="table table-striped table-bordered table-condensed">
+
+            <thead>
+                <tr>
+                    <?php $this->renderTh('partner_code'); ?>
+                    <?php $this->renderTh('partner_name'); ?>
+                    <?php $this->renderTh('service_code'); ?>
+                    <?php $this->renderTh('contact_name'); ?>
+                    <?php $this->renderTh('contact_email'); ?>
+                    <?php $this->renderTh('contact_phone'); ?>
+                    <?php $this->renderTh('status'); ?>
+                    <?php $this->renderTh('credit'); ?>
+                    
+                    <th style='height:42px; line-height:42px; vertical-align:middle;'>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php if (count($this->paginator) != 0) : ?>
+                    <?php 
+                        foreach ($this->paginator as $row){
+    
+                            echo $this->partial('partners/_partial/show-partners.phtml', array('dataRow'=>$row) );
+                        }
+                    ?>
+                <?php else : ?>
+                    <tr><td colspan="100"><h3>No Result</h3></td></tr>
+                <?php endif; ?>
+            </tbody>
+
+            <?php echo $this->renderPaging($this->paginator); ?>
+        </table>
+
+        <?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml'); ?>
+    </div>
+</div>

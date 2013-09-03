@@ -1,0 +1,52 @@
+<?php
+/**
+ * partial loop of Partners
+ * Partners
+ */
+ 
+    $dataRow       = $this->dataRow;
+    
+?>
+<tr>
+
+    <td>
+        <?php echo $dataRow->partner_code;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->partner_name;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->service_code;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->contact_name;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->contact_email;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->contact_phone;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->status;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->credit;?>
+    </td>
+
+    <td>
+        <a href="/partners/update-partners/id/<?php echo $dataRow->id; ?>" class="btn btn-warning"> <i class="icon-edit"></i> 
+           Update
+        </a>
+        <a href="/partners/delete-partners/id/<?php echo $dataRow->id; ?>" class="btn btn-danger btn-delete"> <i class="icon-remove icon-white"></i> 
+           Delete
+        </a>
+    </td>
+</tr>

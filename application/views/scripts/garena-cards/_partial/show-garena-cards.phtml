@@ -1,0 +1,56 @@
+<?php
+/**
+ * partial loop of GarenaCards
+ * GarenaCards
+ */
+ 
+    $dataRow       = $this->dataRow;
+    
+?>
+<tr>
+    
+    <td>
+        <?php echo $dataRow->cardno;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->password;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->value;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->days;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->uid;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->added_time;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->status;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->extra;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->topup_id;?>
+    </td>
+    
+    <td>
+        <a href="/garena-cards/update-garena-cards/id/<?php echo $dataRow->cardno; ?>" class="btn btn-warning"> <i class="icon-edit"></i> 
+           Update
+        </a>
+        <a href="/garena-cards/delete-garena-cards/id/<?php echo $dataRow->cardno; ?>" class="btn btn-danger btn-delete"> <i class="icon-remove icon-white"></i> 
+           Delete
+        </a>
+    </td>
+</tr>

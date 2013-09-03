@@ -1,0 +1,57 @@
+<?php 
+    $form = $this->form;
+?>
+
+<div class="row-fluid show-grid form-horizontal">
+    <div class="span12">
+          <div class="pull-right">
+              <a href="<?php echo $this->url(array('action'=>'show-topup-transaction-state')) ?>" >
+                  Back to list <?php echo $this->text('TopupTransactionState'); ?>
+              </a>
+          </div>
+          <h2>
+              Update <?php echo $this->text('TopupTransactionState'); ?>        
+          </h2>
+    </div>
+</div>
+
+<?php if(isset($this->isSaved)): ?>
+<div class="row-fluid show-grid form-horizontal">
+    <div class="span12">
+        <?php if($this->isSaved):?>
+            <div class="alert alert-success">
+                <?php echo $this->text('TopupTransactionState'); ?> saved succcessfully!
+            </div>
+        <?php else: ?>
+            <div class="alert alert-danger">
+                <?php echo $this->text('TopupTransactionState'); ?> saved fail!
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>
+
+<div class="row-fluid show-grid form-horizontal">
+    <div class="span12">
+        <form class="form-horizontal" method="post" action="">
+            <fieldset>
+                
+                <?php echo $this->renderFormElement($form->id);?>
+                <?php echo $this->renderFormElement($form->partner_id);?>
+                <?php echo $this->renderFormElement($form->gg_username);?>
+                <?php echo $this->renderFormElement($form->topup_type);?>
+                <?php echo $this->renderFormElement($form->topup_value);?>
+                <?php echo $this->renderFormElement($form->topup_partner_txnid);?>
+                <?php echo $this->renderFormElement($form->topup_datetime);?>
+                <?php echo $this->renderFormElement($form->topup_status);?>
+                <?php echo $this->renderFormElement($form->topup_response);?>
+                <?php echo $this->renderFormElement($form->ip_address);?>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary"><i class="icon-ok icon-white"></i> Submit</button>
+                    <button type="reset" class="btn"><i class="icon-refresh"></i> Reset</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

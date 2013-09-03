@@ -1,0 +1,76 @@
+<div class="row-fluid show-grid">
+    <div class="span12">
+        <h2>
+            <?php echo $this->text('TopupTransaction') ?>
+        </h2>
+    </div>
+</div>
+<?php
+$typeSearchs = array(
+    'All' => 'All',
+    'id'                           => $this->text('id', false),
+    'partner_id'                   => $this->text('partner_id', false),
+    'gg_uid'                       => $this->text('gg_uid', false),
+    'gg_username'                  => $this->text('gg_username', false),
+    'topup_type'                   => $this->text('topup_type', false),
+    'topup_value'                  => $this->text('topup_value', false),
+    'topup_gg_cardno'              => $this->text('topup_gg_cardno', false),
+    'topup_partner_txnid'          => $this->text('topup_partner_txnid', false),
+    'topup_datetime'               => $this->text('topup_datetime', false),
+    'topup_status'                 => $this->text('topup_status', false),
+    'topup_response'               => $this->text('topup_response', false),
+    'ip_address'                   => $this->text('ip_address', false),
+);
+$buttons = array(
+//     "<a class='btn btn-small'  
+//         href='{$this->url(array('action' => 'add-'. $this->controller))}'>
+//         <i class='icon-plus'></i>
+//         Add {$this->text($this->controller)}
+//     </a>"
+);
+echo $this->searchBar($typeSearchs, null, $buttons);
+
+?>
+
+
+<div class="row-fluid show-grid">
+    <div class="span12">
+        <table class="table table-striped table-bordered table-condensed">
+
+            <thead>
+                <tr>
+                    <?php $this->renderTh('id'); ?>
+                    <?php $this->renderTh('partner_id'); ?>
+                    <?php $this->renderTh('gg_uid'); ?>
+                    <?php $this->renderTh('gg_username'); ?>
+                    <?php $this->renderTh('topup_type'); ?>
+                    <?php $this->renderTh('topup_value'); ?>
+                    <?php $this->renderTh('topup_gg_cardno'); ?>
+                    <?php $this->renderTh('topup_partner_txnid'); ?>
+                    <?php $this->renderTh('topup_datetime'); ?>
+                    <?php $this->renderTh('topup_status'); ?>
+                    <?php $this->renderTh('topup_response'); ?>
+                    <?php $this->renderTh('ip_address'); ?>
+                    
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php if (count($this->paginator) != 0) : ?>
+                    <?php 
+                        foreach ($this->paginator as $row){
+    
+                            echo $this->partial('topup-transaction/_partial/show-topup-transaction.phtml', array('dataRow'=>$row) );
+                        }
+                    ?>
+                <?php else : ?>
+                    <tr><td colspan="100"><h3>No Result</h3></td></tr>
+                <?php endif; ?>
+            </tbody>
+
+            <?php echo $this->renderPaging($this->paginator); ?>
+        </table>
+
+        <?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml'); ?>
+    </div>
+</div>

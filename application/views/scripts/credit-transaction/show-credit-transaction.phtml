@@ -1,0 +1,66 @@
+<div class="row-fluid show-grid">
+    <div class="span12">
+        <h2>
+            <?php echo $this->text('CreditTransaction') ?>
+        </h2>
+    </div>
+</div>
+<?php
+$typeSearchs = array(
+    'All' => 'All',
+    'id'                           => $this->text('id', false),
+    'invoice_id'                   => $this->text('invoice_id', false),
+    'partner_id'                   => $this->text('partner_id', false),
+    'amount'                       => $this->text('amount', false),
+    'real_revenue'                 => $this->text('real_revenue', false),
+    'activator'                    => $this->text('activator', false),
+    'txn_datetime'                 => $this->text('txn_datetime', false),
+);
+$buttons = array(
+//     "<a class='btn btn-small'  
+//         href='{$this->url(array('action' => 'add-'. $this->controller))}'>
+//         <i class='icon-plus'></i>
+//         Add {$this->text($this->controller)}
+//     </a>"
+);
+echo $this->searchBar($typeSearchs, null, $buttons);
+
+?>
+
+
+<div class="row-fluid show-grid">
+    <div class="span12">
+        <table class="table table-striped table-bordered table-condensed">
+
+            <thead>
+                <tr>
+                    <?php $this->renderTh('id'); ?>
+                    <?php $this->renderTh('invoice_id'); ?>
+                    <?php $this->renderTh('partner_id'); ?>
+                    <?php $this->renderTh('amount'); ?>
+                    <?php $this->renderTh('real_revenue'); ?>
+                    <?php $this->renderTh('activator'); ?>
+                    <?php $this->renderTh('txn_datetime'); ?>
+                    
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php if (count($this->paginator) != 0) : ?>
+                    <?php 
+                        foreach ($this->paginator as $row){
+    
+                            echo $this->partial('credit-transaction/_partial/show-credit-transaction.phtml', array('dataRow'=>$row) );
+                        }
+                    ?>
+                <?php else : ?>
+                    <tr><td colspan="100"><h3>No Result</h3></td></tr>
+                <?php endif; ?>
+            </tbody>
+
+            <?php echo $this->renderPaging($this->paginator); ?>
+        </table>
+
+        <?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml'); ?>
+    </div>
+</div>

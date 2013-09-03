@@ -1,0 +1,56 @@
+<?php 
+    $form = $this->form;
+?>
+
+<div class="row-fluid show-grid form-horizontal">
+    <div class="span12">
+          <div class="pull-right">
+              <a href="<?php echo $this->url(array('action'=>'show-garena-cards')) ?>" >
+                  Back to list <?php echo $this->text('GarenaCards'); ?>
+              </a>
+          </div>
+          <h2>
+              Update <?php echo $this->text('GarenaCards'); ?>        
+          </h2>
+    </div>
+</div>
+
+<?php if(isset($this->isSaved)): ?>
+<div class="row-fluid show-grid form-horizontal">
+    <div class="span12">
+        <?php if($this->isSaved):?>
+            <div class="alert alert-success">
+                <?php echo $this->text('GarenaCards'); ?> saved succcessfully!
+            </div>
+        <?php else: ?>
+            <div class="alert alert-danger">
+                <?php echo $this->text('GarenaCards'); ?> saved fail!
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>
+
+<div class="row-fluid show-grid form-horizontal">
+    <div class="span12">
+        <form class="form-horizontal" method="post" action="">
+            <fieldset>
+                
+                <?php echo $this->renderFormElement($form->cardno);?>
+                <?php echo $this->renderFormElement($form->password);?>
+                <?php echo $this->renderFormElement($form->value);?>
+                <?php echo $this->renderFormElement($form->days);?>
+                <?php echo $this->renderFormElement($form->uid);?>
+                <?php echo $this->renderFormElement($form->added_time);?>
+                <?php echo $this->renderFormElement($form->status);?>
+                <?php echo $this->renderFormElement($form->extra);?>
+                <?php echo $this->renderFormElement($form->topup_id);?>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary"><i class="icon-ok icon-white"></i> Submit</button>
+                    <button type="reset" class="btn"><i class="icon-refresh"></i> Reset</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

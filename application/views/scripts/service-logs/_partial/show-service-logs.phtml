@@ -1,0 +1,48 @@
+<?php
+/**
+ * partial loop of ServiceLogs
+ * ServiceLogs
+ */
+ 
+    $dataRow       = $this->dataRow;
+    
+?>
+<tr>
+    
+    <td>
+        <?php echo $dataRow->id;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->log_type;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->gg_username;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->partner_id;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->topup_value;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->topup_partner_txnid;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->extra;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->datetime;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->ip_address;?>
+    </td>
+    
+</tr>
