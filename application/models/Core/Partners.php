@@ -41,11 +41,9 @@ class Application_Model_Core_Partners extends Base_Db_Table_Abstract {
             "contact_name"                 => "Partners.contact_name          LIKE '%{{param}}%'",
             "contact_email"                => "Partners.contact_email         LIKE '%{{param}}%'",
             "contact_phone"                => "Partners.contact_phone         LIKE '%{{param}}%'",
-            "status"                       => "Partners.status                = '{{param}}'",
-            "public_key"                   => "Partners.public_key            LIKE '%{{param}}%'",
-            "private_key"                  => "Partners.private_key           LIKE '%{{param}}%'",
-            "credit"                       => "Partners.credit                = '{{param}}'",
-            "created_date"                 => "Partners.created_date          = '{{param}}'",
+            "status"                       => "Partners.status                LIKE '%{{param}}%'",
+            "credit"                       => "Partners.credit                LIKE '%{{param}}%'",
+            "created_date"                 => "Partners.created_date          LIKE '%{{param}}%'",
             "created_by"                   => "Partners.created_by            LIKE '%{{param}}%'",
             "ip_address"                   => "Partners.ip_address            LIKE '%{{param}}%'",
         );
@@ -60,8 +58,6 @@ class Application_Model_Core_Partners extends Base_Db_Table_Abstract {
             "contact_email_Sort"           => "Partners.contact_email         {{param}}",
             "contact_phone_Sort"           => "Partners.contact_phone         {{param}}",
             "status_Sort"                  => "Partners.status                {{param}}",
-            "public_key_Sort"              => "Partners.public_key            {{param}}",
-            "private_key_Sort"             => "Partners.private_key           {{param}}",
             "credit_Sort"                  => "Partners.credit                {{param}}",
             "created_date_Sort"            => "Partners.created_date          {{param}}",
             "created_by_Sort"              => "Partners.created_by            {{param}}",
@@ -81,7 +77,21 @@ class Application_Model_Core_Partners extends Base_Db_Table_Abstract {
      */
     public function add($data) {
         try {
+            // generate 2048-bit RSA key
+            $pkGenerate = openssl_pkey_new(array(
+                'private_key_bits' => SSL_PRIVATE_KEY_BITS,
+                'private_key_type' => OPENSSL_KEYTYPE_RSA
+            ));
+            $pkGeneratePrivate='';
+            // get the private key
+            openssl_pkey_export($pkGenerate,$pkGeneratePrivate); // NOTE: second argument is passed by reference
+            // get the public key
+            $pkGenerateDetails = openssl_pkey_get_details($pkGenerate);
+            $pkGeneratePublic = $pkGenerateDetails['key'];
+
             $data['create_by'] = "";
+            $data['public_key'] = $pkGeneratePublic;
+            $data['private_key'] = $pkGeneratePrivate;
             $data['ip_address'] = $_SERVER["REMOTE_ADDR"];
             $newRow = $this->createRow($data);
             return $newRow->save();

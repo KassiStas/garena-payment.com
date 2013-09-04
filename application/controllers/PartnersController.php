@@ -42,13 +42,56 @@ class PartnersController extends Zend_Controller_Action
         $this->view->paginator = $paginator;
         $this->view->assign($params);
     }
-    
+
     /**
-    * Add record Partners
-    * @param array $formData
-    * @return
-    * @author 
-    */
+     * Add record Partners
+     * @param array $formData
+     * @return
+     * @author
+     */
+    public function chargeAction() {
+        
+        /* Check valid data */
+        if(null == $id = $this->_request->getParam('id',null)){
+            $this->_helper->redirector('show-partners');
+        }
+        
+        $row = $this->_model->find($id)->current();
+        if(!$row) {
+            $this->_helper->redirector('show-partners');
+        }
+        
+        $form = new Application_Form_Core_CreditTransaction();
+
+        $form->getElement('partner_id')->setValue($id)->setAttrib('readonly', 'true');
+        $now = new Zend_Date();
+        $now = $now->toString('yyyy/MM/dd HH:mm');
+        $form->getElement('txn_datetime')->setValue($now);
+        
+        /* Proccess data post*/
+        if($this->_request->isPost()) {
+            $creditModel = new Application_Model_Core_CreditTransaction();
+            $this->view->isSaved = false;
+            $formData = $this->_request->getPost();
+            
+            if($form->isValid($formData)) {
+                $formData['txn_datetime'] = (new Zend_Date($formData['txn_datetime']))->toString('yyyy/MM/dd HH:mm');
+                if($creditModel->add($formData)){
+                    
+                    $this->view->isSaved = true;
+                }
+            }
+        }
+        $this->view->form = $form;
+        $this->view->now = $now;
+    }
+
+    /**
+     * Add record Partners
+     * @param array $formData
+     * @return
+     * @author
+     */
     public function addPartnersAction() {
         $form = new Application_Form_Core_Partners();
         /* Proccess data post*/
@@ -84,12 +127,20 @@ class PartnersController extends Zend_Controller_Action
     
         $form = new Application_Form_Core_Partners();
 
+        
         /* Proccess data post*/
         if($this->_request->isPost()) {
             $this->view->isSaved = false;
             $formData = $this->_request->getPost();
+            if($row->partner_code == $formData['partner_code']){
+                $form->getElement('partner_code')->removeValidator('NoRecordExists');
+            }
+            
             if($form->isValid($formData)) {
+                unset($formData['public_key']);
+                unset($formData['private_key']);
                 if($this->_model->edit($form->getValues())){
+                    $row = $this->_model->find($id)->current();
                     $this->view->isSaved = true;
                 }
             }

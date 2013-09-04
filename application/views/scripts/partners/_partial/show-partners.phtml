@@ -42,11 +42,15 @@
     </td>
 
     <td>
-        <a href="/partners/update-partners/id/<?php echo $dataRow->id; ?>" class="btn btn-warning"> <i class="icon-edit"></i> 
-           Update
+        <a href="/partners/charge/id/<?php echo $dataRow->id; ?>" class="btn btn-info btn-sm"> 
+            
+           Charge
         </a>
-        <a href="/partners/delete-partners/id/<?php echo $dataRow->id; ?>" class="btn btn-danger btn-delete"> <i class="icon-remove icon-white"></i> 
-           Delete
+        <a href="/credit-transaction/show-credit-transaction/fieldsearch/partner_id/keywords/<?php echo $dataRow->id; ?>" class="btn btn-info btn-sm"> 
+            Credit Transactions
+        </a>
+        <a href="/partners/update-partners/id/<?php echo $dataRow->id; ?>" class="btn btn-warning btn-sm">  
+           Update
         </a>
     </td>
 </tr>

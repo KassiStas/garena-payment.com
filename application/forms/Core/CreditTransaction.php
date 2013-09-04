@@ -24,7 +24,7 @@ class Application_Form_Core_CreditTransaction extends Zend_Form
         $partner_id->setLabel('partner_id');
         $partner_id->addFilter('StringTrim');
         $partner_id->addValidator('Int');
-        $partner_id->setRequired(false);
+        $partner_id->setRequired(true);
         $partner_id->setDecorators(array('ViewHelper'));
         $this->addElement($partner_id);
 
@@ -32,7 +32,7 @@ class Application_Form_Core_CreditTransaction extends Zend_Form
         $amount->setLabel('amount');
         $amount->addFilter('StringTrim');
         $amount->addValidator('Int');
-        $amount->setRequired(false);
+        $amount->setRequired(true);
         $amount->setDecorators(array('ViewHelper'));
         $this->addElement($amount);
 
@@ -40,7 +40,7 @@ class Application_Form_Core_CreditTransaction extends Zend_Form
         $real_revenue->setLabel('real_revenue');
         $real_revenue->addFilter('StringTrim');
         $real_revenue->addValidator('Int');
-        $real_revenue->setRequired(false);
+        $real_revenue->setRequired(true);
         $real_revenue->setDecorators(array('ViewHelper'));
         $this->addElement($real_revenue);
 
@@ -54,8 +54,8 @@ class Application_Form_Core_CreditTransaction extends Zend_Form
         $txn_datetime = new Zend_Form_Element_Text('txn_datetime');
         $txn_datetime->setLabel('txn_datetime');
         $txn_datetime->addFilter('StringTrim');
-        $txn_datetime->addValidator('Date');
-        $txn_datetime->setRequired(false);
+        $txn_datetime->addValidator(new Application_Form_Validate_Datetime());
+        $txn_datetime->setRequired(true);
         $txn_datetime->setDecorators(array('ViewHelper'));
         $this->addElement($txn_datetime);
 
