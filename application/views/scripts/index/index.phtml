@@ -1,45 +1,35 @@
-<div class="row-fluid show-grid form-horizontal">
-	<div class="span12">
-		<h2>Gen code</h2>
-	</div>
-</div>
-<style>
-<!--
-.bs-glyphicons li {
-	background-color: rgba(86, 61, 124, 0.0980392);
-	color: rgb(51, 51, 51);
-	display: list-item;
-	float: left;
-	
-	height: 115px;
-	line-height: 16px;
-	list-style-image: none;
-	list-style-position: outside;
-	list-style-type: none;
-	margin-bottom: -1px;
-	margin-left: 0px;
-	margin-right: -1px;
-	margin-top: 0px;
-	padding-bottom: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-top: 10px;
-	text-align: center;
-	width: 105.9375px;
-}
--->
-</style>
 <div class="row">
-	<div class="col-md-12">
-		<ul class="bs-glyphicons">
-			<li><span class="glyphicon glyphicon-adjust"></span> .glyphicon
-				.glyphicon-adjust</li>
-			<li><span class="glyphicon glyphicon-align-center"></span> .glyphicon
-				.glyphicon-align-center</li>
-			<li><span class="glyphicon glyphicon-align-justify"></span>
-				.glyphicon .glyphicon-align-justify</li>
-			<li><span class="glyphicon glyphicon-align-left"></span> .glyphicon
-				.glyphicon-align-left</li>
-		</ul>
-	</div>
+    <div class="col-md-12">
+        <h2>Payment service administration</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Partner Id</th>
+                        <th>Partner Code</th>
+                        <th>Partner Name</th>
+                        <th>Credit Amount</th>
+                        <th>Topup Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <?php foreach ($this->records as $record):?>
+        
+                    <tr>
+                        <td><?php echo $record->partner_id?></td>
+                        <td><?php echo $record->partner_code?></td>
+                        <td><?php echo $record->partner_name?></td>
+                        <td style="color: #b55; text-align: right;"><?php echo $record->CreditAmount?$record->CreditAmount:0;?></td>
+                        <td style="color: #5b5; text-align: right;"><?php echo $record->TopupAmount?$record->TopupAmount:0?></td>
+                    </tr>
+                    <?php endforeach;?>
+               </tbody>
+               
+            </table>
+        </div>
+    </div>
 </div>

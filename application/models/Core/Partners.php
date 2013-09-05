@@ -126,4 +126,22 @@ class Application_Model_Core_Partners extends Base_Db_Table_Abstract {
             return false;
         }
     }
+    
+    public function getPartnerCreditTransactionStatistic(){
+        //select partner_id, sum(amount), sum(real_revenue) from CreditTransaction group by partner_id;
+        $sql = "
+            SELECT 
+              id as partner_id,
+              partner_name,
+              partner_code,
+              (SELECT SUM(topup_value) FROM TopupTransaction as tt WHERE tt.partner_id = p.id and topup_status=1) as TopupAmount,
+              (SELECT SUM(amount) FROM CreditTransaction as ct WHERE ct.partner_id = p.id) as CreditAmount
+            FROM Partners as p            
+            ";
+//         $stm = $this->_db->query($sql);
+        $this->_db->setFetchMode(Zend_Db::FETCH_OBJ);
+        $records = $this->_db->fetchAll($sql);
+//         var_dump($records);die;
+        return $records;
+    }
 }

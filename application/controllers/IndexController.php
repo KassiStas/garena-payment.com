@@ -19,7 +19,9 @@ class IndexController extends Zend_Controller_Action
      *
      */
     public function indexAction() {
-        
+        $partnerModel = new Application_Model_Core_Partners();
+        $records = $partnerModel->getPartnerCreditTransactionStatistic();
+        $this->view->records = $records;
     }
     
     

@@ -8,15 +8,14 @@
 <?php
 $typeSearchs = array(
     'All' => 'All',
-    'cardno'                       => $this->text('cardno', false),
-    'password'                     => $this->text('password', false),
-    'value'                        => $this->text('value', false),
-    'days'                         => $this->text('days', false),
-    'uid'                          => $this->text('uid', false),
-    'added_time'                   => $this->text('added_time', false),
-    'status'                       => $this->text('status', false),
-    'extra'                        => $this->text('extra', false),
-    'topup_id'                     => $this->text('topup_id', false),
+    'cardno'                       => $this->text('Cardno', false),
+    'value'                        => $this->text('Value', false),
+    'days'                         => $this->text('Days', false),
+    'uid'                          => $this->text('Uid', false),
+    'added_time'                   => $this->text('Added Time', false),
+    'status'                       => $this->text('Status', false),
+    'extra'                        => $this->text('Extra', false),
+    'topup_id'                     => $this->text('Topup Id', false),
 );
 $buttons = array(
     "<a class='btn btn-success btn-small'  
@@ -36,15 +35,14 @@ echo $this->searchBar($typeSearchs, null, $buttons);
 
             <thead>
                 <tr>
-                    <?php $this->renderTh('cardno'); ?>
-                    <?php $this->renderTh('password'); ?>
-                    <?php $this->renderTh('value'); ?>
-                    <?php $this->renderTh('days'); ?>
-                    <?php $this->renderTh('uid'); ?>
-                    <?php $this->renderTh('added_time'); ?>
-                    <?php $this->renderTh('status'); ?>
-                    <?php $this->renderTh('extra'); ?>
-                    <?php $this->renderTh('topup_id'); ?>
+                    <?php $this->renderTh('Cardno'); ?>
+                    <?php $this->renderTh('Value'); ?>
+                    <?php $this->renderTh('Days'); ?>
+                    <?php $this->renderTh('Uid'); ?>
+                    <?php $this->renderTh('Added Time'); ?>
+                    <?php $this->renderTh('Status'); ?>
+                    <?php $this->renderTh('Extra'); ?>
+                    <?php $this->renderTh('Topup Id'); ?>
                     
                     <th style='height:42px; line-height:42px; vertical-align:middle;'> Actions</th>
                 </tr>
