@@ -12,7 +12,7 @@ class Application_Model_Core_GarenaCards extends Base_Db_Table_Abstract {
 * Define table GarenaCards
 ********************************************************************/
     protected $_name        = 'GarenaCards';
-    protected $_primary     = array('cardno',);
+    protected $_primary     = array('id',);
 
     protected $_dependentTables = array(
 

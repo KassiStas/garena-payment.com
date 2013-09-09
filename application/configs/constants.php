@@ -6,5 +6,3 @@ if(APPLICATION_ENV == 'production'){
 }
 
 define('NUMBER_OF_ITEM_PER_PAGE', 20);
-
-define('SSL_PRIVATE_KEY_BITS', 1024);

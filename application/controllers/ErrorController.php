@@ -2,6 +2,7 @@
 
 class ErrorController extends Zend_Controller_Action
 {
+    const EXCEPTION_PERMISSION = 'EXCEPTION_PERMISSION';
     public function init() {
 
     }
@@ -28,6 +29,15 @@ class ErrorController extends Zend_Controller_Action
                 $this->getResponse()->setHttpResponseCode(404);
                 $this->view->message = PAGE_NOT_FOUND;
                 break;
+            case self::EXCEPTION_PERMISSION:
+                if(APPLICATION_ENV == 'production'){
+                    $this->_forward('permission');
+                    return;
+                }
+                // 404 error -- controller or action not found
+                $this->getResponse()->setHttpResponseCode(500);
+                $this->view->message = 'Permission problem';
+                
             default:
                 if(APPLICATION_ENV == 'production'){
                     $this->_forward('app-error');

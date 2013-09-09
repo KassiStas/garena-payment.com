@@ -9,20 +9,14 @@ class Zend_View_Helper_RenderFormElement extends Zend_View_Helper_Abstract
      */
     public function renderFormElement($element) {
 
-        if($element->getType()!="Zend_Form_Element_Checkbox"){
-                $element->setAttrib('class',  $element->getAttrib('class') . ' form-control');
-        }
-        if($element->isRequired()){
-            $element->setAttrib('class',  $element->getAttrib('class') . ' required');
-        }
         switch ($element->getType()) {
             case 'Zend_Form_Element_Textarea':
+                $element->setAttrib('class', 'input-xxlarge');
                 $element->setAttrib('rows', 5);
                 $element->setAttrib('cols', 80);
             break;
             case 'Zend_Form_Element_Hidden':
                 return $element;
-
             default:
                 ;
             break;
@@ -30,7 +24,7 @@ class Zend_View_Helper_RenderFormElement extends Zend_View_Helper_Abstract
         
         $error = '';
         if ($element->hasErrors()) {
-            $error = 'has-error';
+            $error = 'error';
         }
         if($element->getType() == 'Zend_Form_Element_Textarea'){
             
@@ -48,11 +42,11 @@ class Zend_View_Helper_RenderFormElement extends Zend_View_Helper_Abstract
     
     private function _getTemplate(){
         $t = '
-            <div class="form-group %%ERROR_CLASS%%">
-                <label for="%%ELEMENT_NAME%%" class="col-lg-2 control-label">%%ELEMENT_LABEL%%</label>
-                <div class="col-lg-6">
+            <div class="control-group %%ERROR_CLASS%%">
+                <label for="%%ELEMENT_NAME%%" class="control-label">%%ELEMENT_LABEL%%</label>
+                <div class="controls">
                     %%ELEMENT%%
-                    <label class="control-label">%%HELP_MESSAGE%%</label>
+                    <span class="help-inline">%%HELP_MESSAGE%%</span>
                 </div>
             </div>
         ';

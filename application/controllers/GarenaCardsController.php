@@ -4,7 +4,7 @@
 /**
  * Controller for GarenaCards controller
  *
- * @author  kissconcept
+ * @author  Tung Ly
  * @version $Id$
  */
 class GarenaCardsController extends Zend_Controller_Action

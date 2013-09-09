@@ -4,7 +4,7 @@
 /**
  * Controller for CreditTransaction controller
  *
- * @author  kissconcept
+ * @author  Tung Ly
  * @version $Id$
  */
 class CreditTransactionController extends Zend_Controller_Action
@@ -32,7 +32,7 @@ class CreditTransactionController extends Zend_Controller_Action
         $params            = $this->_getAllParams();
         $params['page']    = $this->_getParam('page',1);
         $params['perpage'] = $this->_getParam('perpage',NUMBER_OF_ITEM_PER_PAGE);
-        
+//         var_dump($params);die;
         /*Get all data*/
         $paginator = Zend_Paginator::factory($this->_model->getQuerySelectAll($params));
         $paginator->setCurrentPageNumber($params['page']);
@@ -118,6 +118,7 @@ class CreditTransactionController extends Zend_Controller_Action
         $this->_helper->redirector('show-credit-transaction');
     }
     
+
     /**
     * Function show all CreditTransaction
     * @return list CreditTransaction
@@ -130,6 +131,7 @@ class CreditTransactionController extends Zend_Controller_Action
         $params            = $this->_getAllParams();
         $params['page']    = $this->_getParam('page',1);
         $params['perpage'] = $this->_getParam('perpage',20);
+        $params['partner_id'] = $this->_getParam('partner_id',20);
         
         /*Get all data*/
         $paginator = Zend_Paginator::factory($this->_model->getQuerySelectAll($params));

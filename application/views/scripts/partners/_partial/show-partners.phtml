@@ -14,7 +14,9 @@
     </td>
 
     <td>
-        <?php echo $dataRow->partner_name;?>
+        <a href="<?php $this->url(array('controller' => 'partners', 'action' => 'detail', 'params' => array('id' =>$dataRow->id )))?>">
+            <?php echo $dataRow->partner_name;?>
+        </a>
     </td>
 
     <td>
@@ -42,14 +44,14 @@
     </td>
 
     <td>
-        <a href="/partners/charge/id/<?php echo $dataRow->id; ?>" class="btn btn-info btn-sm"> 
-            
+        <a href="<?php echo $this->url(array('controller' => 'partners', 'action' => 'charge', 'id' =>$dataRow->id ))?>" class="btn btn-info btn-sm"> 
            Charge
         </a>
-        <a href="/credit-transaction/show-credit-transaction/fieldsearch/partner_id/keywords/<?php echo $dataRow->id; ?>" class="btn btn-info btn-sm"> 
+        <a href="<?php echo  $this->url(array('controller' => 'credit-transaction', 'action' => 'show-credit-transaction', 'fieldsearch' => 'partner_id' ,'keywords' =>$dataRow->id ))?>" class="btn btn-info btn-sm"> 
             Credit Transactions
         </a>
-        <a href="/partners/update-partners/id/<?php echo $dataRow->id; ?>" class="btn btn-warning btn-sm">  
+        
+        <a href="<?php echo  $this->url(array('controller' => 'partners', 'action' => 'update-partners','id' =>$dataRow->id ))?>" class="btn btn-warning btn-sm">  
            Update
         </a>
     </td>

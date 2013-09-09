@@ -4,7 +4,7 @@
 /**
  * Controller for ServiceLogs controller
  *
- * @author  kissconcept
+ * @author  Tung Ly
  * @version $Id$
  */
 class ServiceLogsController extends Zend_Controller_Action

@@ -4,7 +4,7 @@
 /**
  * Controller for Partners controller
  *
- * @author  kissconcept
+ * @author  Tung Ly
  * @version $Id$
  */
 class PartnersController extends Zend_Controller_Action
@@ -21,6 +21,24 @@ class PartnersController extends Zend_Controller_Action
     public function indexAction() {
         $this->_helper->redirector('show-partners');
     }    
+    
+    
+    public function detailAction(){
+
+        /* Check valid data */
+        if(null == $id = $this->_request->getParam('id',null)){
+            $this->_helper->redirector('show-partners');
+        }
+        
+        $detail = $this->_model->getPartnerDetail($id);
+        if(!$detail) {
+            $this->_helper->redirector('show-partners');
+        }
+
+        $detail->currentCredit = $detail->charged - $detail->topedup;
+        $this->view->detail = $detail;
+        
+    }
     
    /**
     * Function show all Partners

@@ -4,7 +4,7 @@
 /**
  * Controller for TopupTransaction controller
  *
- * @author  kissconcept
+ * @author  Tung Ly
  * @version $Id$
  */
 class TopupTransactionController extends Zend_Controller_Action
@@ -116,6 +116,25 @@ class TopupTransactionController extends Zend_Controller_Action
             $row->delete();
         }
         $this->_helper->redirector('show-topup-transaction');
+    }
+
+    /**
+     * Function show all TopupTransaction
+     * @return list TopupTransaction
+     * @author
+     */
+    public function ajaxShowPartnerTopupTransactionAction() {
+        $this->_helper->layout->disableLayout();
+        if(null == $partnerId = $this->_request->getParam('partnerId',null)){
+            die('Error');
+        }
+        $groupBy = $this->_getParam('groupBy', 'year');
+        
+        $partnerTopupTransactions = $this->_model->getPartnerTopupTransactions($partnerId, $groupBy);
+//         var_dump($partnerTopupTransactions);die;
+        
+        $this->view->data = $partnerTopupTransactions;
+        $this->view->groupBy = $groupBy;
     }
     
     /**

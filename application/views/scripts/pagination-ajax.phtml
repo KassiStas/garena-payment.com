@@ -1,4 +1,5 @@
-    <ul class="pagination controls-buttons">
+<div class="pagination">
+    <ul class="controls-buttons">
     <!-- First page link -->
     <?php if (isset($this->previous)): ?>
          <li><a href="#" rel="<?php echo $this->url(array('page' => $this->first, 'format' => 'html')); ?>">First</a></li>
@@ -37,6 +38,7 @@
     <?php endif; ?>
         <li><a>Page <?php echo  $this->current; ?> of <?php echo $this->last; ?></a></li>
     </ul>
+</div>
 
 
 

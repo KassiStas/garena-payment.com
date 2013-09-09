@@ -4,7 +4,7 @@
 /**
  * Controller for TopupTransactionState controller
  *
- * @author  kissconcept
+ * @author  Tung Ly
  * @version $Id$
  */
 class TopupTransactionStateController extends Zend_Controller_Action

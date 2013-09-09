@@ -9,7 +9,14 @@ class Application_Form_Core_GarenaCards extends Zend_Form
      */
     public function __construct($option = array())
     {
-        $cardno = new Zend_Form_Element_Hidden('cardno');
+        $id = new Zend_Form_Element_Hidden('id');
+        $id->setDecorators(array('ViewHelper'));
+        $this->addElement($id);
+        
+        $cardno = new Zend_Form_Element_Text('cardno');
+        $cardno->setLabel('Card.No');
+        $cardno->addFilter('StringTrim');
+        $cardno->setRequired(true);
         $cardno->setDecorators(array('ViewHelper'));
         $this->addElement($cardno);
 

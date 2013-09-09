@@ -36,6 +36,7 @@
         <form class="form-horizontal" method="post" action="">
             <fieldset>
                 
+                <?php echo $this->renderFormElement($form->id);?>
                 <?php echo $this->renderFormElement($form->cardno);?>
                 <?php echo $this->renderFormElement($form->password);?>
                 <?php echo $this->renderFormElement($form->value);?>
@@ -46,10 +47,17 @@
                 <?php echo $this->renderFormElement($form->extra);?>
                 <?php echo $this->renderFormElement($form->topup_id);?>
                 
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary"><i class="icon-ok icon-white"></i> Submit</button>
-                    <button type="reset" class="btn"><i class="icon-refresh"></i> Reset</button>
-                </div>
+                <div class="form-group ">
+    				<label for="" class="col-lg-2 control-label">&nbsp</label>
+    				<div class="col-lg-6">
+    					<button type="submit" class="btn btn-primary">
+    						<i class="icon-ok icon-white"></i> Submit
+    					</button>
+    					<button type="reset" class="btn">
+    						<i class="icon-refresh"></i> Reset
+    					</button>
+    				</div>
+    		    </div>
             </fieldset>
         </form>
     </div>

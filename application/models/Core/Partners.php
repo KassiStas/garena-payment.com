@@ -136,6 +136,7 @@ class Application_Model_Core_Partners extends Base_Db_Table_Abstract {
               partner_code,
               (SELECT SUM(topup_value) FROM TopupTransaction as tt WHERE tt.partner_id = p.id and topup_status=1) as TopupAmount,
               (SELECT SUM(amount) FROM CreditTransaction as ct WHERE ct.partner_id = p.id) as CreditAmount
+              
             FROM Partners as p            
             ";
 //         $stm = $this->_db->query($sql);
@@ -143,5 +144,30 @@ class Application_Model_Core_Partners extends Base_Db_Table_Abstract {
         $records = $this->_db->fetchAll($sql);
 //         var_dump($records);die;
         return $records;
+    }
+    
+
+    public function getPartnerDetail($partnerId){
+        //select partner_id, sum(amount), sum(real_revenue) from CreditTransaction group by partner_id;
+        $partnerId = mysql_real_escape_string(trim($partnerId));
+        $sql = "
+            SELECT
+              id as partner_id,
+              partner_name,
+              partner_code,
+              contact_name,
+              contact_email,
+              contact_phone,
+              status,              
+              (SELECT SUM(topup_value) FROM TopupTransaction as tt WHERE tt.partner_id = p.id and topup_status=1) as charged,
+              (SELECT SUM(amount) FROM CreditTransaction as ct WHERE ct.partner_id = p.id) as topedup
+              
+            FROM Partners as p where p.id = $partnerId
+            ";
+        //         $stm = $this->_db->query($sql);
+        $this->_db->setFetchMode(Zend_Db::FETCH_OBJ);
+        $record = $this->_db->fetchRow($sql);
+        //         var_dump($records);die;
+        return $record;
     }
 }

@@ -69,5 +69,48 @@ class Application_Model_Core_TopupTransaction extends Base_Db_Table_Abstract {
 * PUT YOUR CODE HERE
 ********************************************************************/
 
-
+    public function getPartnerTopupTransactions($partnerId, $groupBy){
+        $groupByField = "";
+        $limit = "";
+//         die($groupBy);
+        switch ($groupBy) {
+        	case "week":
+        	    $groupByField = "concat(year(topup_datetime),'-', month(topup_datetime),' - W',week(topup_datetime)) as row";
+                $limit = "limit 8";
+                break;
+        	case "month":
+        	    $groupByField = "concat(year(topup_datetime),'-', month(topup_datetime)) as row";
+                $limit = "limit 12";
+                break;
+        	case "year":
+        	    $groupByField = "year(topup_datetime) as row";
+                $limit = "limit 4";
+                break;
+        	default:
+        		$groupByField = "topup_datetime as row";
+                $limit = "limit 20";
+        	   break;
+        }
+        $partnerId = mysql_real_escape_string(trim($partnerId));
+        $sql = "
+            select 
+                $groupByField, 
+                topup_value as col, 
+                count(id) as amount  
+            from TopupTransaction 
+            where partner_id = $partnerId
+            group by row, topup_value 
+            $limit
+        ";
+//         die($sql);
+        //         $stm = $this->_db->query($sql);
+//         $this->_db->setFetchMode(Zend_Db::FETCH_OBJ);
+        $records = $this->_db->fetchAll($sql);
+        //         var_dump($records);die;
+        
+        foreach ($records as $record){
+            $data["{$record['row']}"]["{$record['col']}"] = $record['amount'];
+        }
+        return $data;
+    }
 }

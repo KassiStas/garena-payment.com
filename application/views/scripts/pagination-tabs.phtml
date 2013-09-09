@@ -1,5 +1,6 @@
 <?php $group = "#" . $this->show; ?>
-    <ul class="pagination pull-right">
+<div class="pagination pull-right">
+    <ul>
         <!-- First page link -->
         <?php if (isset($this->previous)): ?>
             <li><a href="<?php echo $this->url(array('page' => $this->first)); ?><?php echo $group ?>">First</a></li>
@@ -39,3 +40,4 @@
 
         <li class="disabled"><a href="javascript:">Page <?php echo  $this->current; ?> of <?php echo $this->last; ?></a></li>
     </ul>
+</div>
