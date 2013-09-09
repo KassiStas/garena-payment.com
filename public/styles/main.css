@@ -1,7 +1,12 @@
 body{
 	padding: 10px;
 }
-
+.table td{
+	vertical-align: middle;
+}
+.table thead th{
+	vertical-align: middle;
+}
 /** TRANSLATE */
 .quick-update-box {
    position: fixed;
@@ -9,14 +14,11 @@ body{
    top: 0
 }
 
-form input[type='checkbox']{
-    margin-top: 10px;	
+form span.required:after{
+	content: "(*)";
+	color: red;
 }
 
 .hint{
 	padding:2px;
-}
-
-.pagination{
-	margin-top:0;
 }

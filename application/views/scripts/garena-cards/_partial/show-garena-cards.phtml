@@ -51,7 +51,7 @@ $dataRow = $this->dataRow;
 		    'controller' => 'garena-cards',
 		    'action' => 'delete-garena-cards', 
 		    'id' =>$dataRow->id ))?>"
-		class="btn btn-danger btn-sm "> <i class="icon-remove icon-white"></i>
+		class="btn btn-danger btn-sm " onclick="return confirm('Are you sure?');"> <i class="icon-remove icon-white"></i>
 			Delete
 	</a></td>
 </tr>

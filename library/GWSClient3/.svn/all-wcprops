@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/usvn/svn/topup_service/!svn/ver/2/trunk/libraries/garena/GWSClient3
+END
+CVO_WSRequest.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/usvn/svn/topup_service/!svn/ver/2/trunk/libraries/garena/GWSClient3/CVO_WSRequest.php
+END
+gcms_include.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/usvn/svn/topup_service/!svn/ver/2/trunk/libraries/garena/GWSClient3/gcms_include.php
+END
+GWSClientException.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/usvn/svn/topup_service/!svn/ver/2/trunk/libraries/garena/GWSClient3/GWSClientException.php
+END
+GWSClient.php
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/usvn/svn/topup_service/!svn/ver/2/trunk/libraries/garena/GWSClient3/GWSClient.php
+END
+test2.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/usvn/svn/topup_service/!svn/ver/2/trunk/libraries/garena/GWSClient3/test2.php
+END
+CVO_WSResponse_Message.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/usvn/svn/topup_service/!svn/ver/2/trunk/libraries/garena/GWSClient3/CVO_WSResponse_Message.php
+END
+include.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/usvn/svn/topup_service/!svn/ver/2/trunk/libraries/garena/GWSClient3/include.php
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/usvn/svn/topup_service/!svn/ver/2/trunk/libraries/garena/GWSClient3/index.html
+END
