@@ -1,0 +1,36 @@
+<?php
+/**
+ * partial loop of Tokens
+ * Tokens
+ */
+ 
+    $dataRow       = $this->dataRow;
+    
+?>
+<tr>
+    
+    <td>
+        <?php echo $dataRow->id;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->Key;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->start_time;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->last_request_time;?>
+    </td>
+    
+    <td>
+        <a href="/tokens/update-tokens/id/<?php echo $dataRow->id; ?>" class="btn"> <i class="icon-edit"></i> 
+           Update
+        </a>
+        <a href="/tokens/delete-tokens/id/<?php echo $dataRow->id; ?>" class="btn btn-danger btn-delete"> <i class="icon-remove icon-white"></i> 
+           Delete
+        </a>
+    </td>
+</tr>

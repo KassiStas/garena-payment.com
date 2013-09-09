@@ -1,0 +1,38 @@
+<?php
+/**
+ * partial loop of CreditTransaction
+ * CreditTransaction
+ */
+ 
+    $dataRow       = $this->dataRow;
+    
+?>
+<tr>
+    
+    <td>
+        <?php echo $dataRow->id;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->invoice_id;?>
+    </td>
+    
+    <td>
+        <?php echo $dataRow->txn_datetime;?>
+    </td>
+    
+    <td>
+        <?php echo $dataRow->amount;?>
+    </td>
+
+    <td>
+        <?php echo $dataRow->real_revenue;?>
+    </td>
+    <td>
+        <?php echo $dataRow->activator;?>
+    </td>
+
+
+
+    
+</tr>

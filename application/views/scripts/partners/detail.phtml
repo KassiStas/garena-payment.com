@@ -1,0 +1,108 @@
+<?php //var_dump($this->detail);die;?>
+<div class="row">
+	<div class="col-md-12">
+        <h1>Partner Detail</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<table class="table">
+			<tr>
+				<td width="100"></td>
+				<td width="150">Partner Name:</td>
+				<td class="active"><?php echo $this->detail->partner_name;?></td>
+				<td width="150"></td>
+				<td width="150">Partner Code:</td>
+				<td class="active"><?php echo $this->detail->partner_code;?></td>
+                <td width="100"></td>
+			</tr>
+			<tr>
+				<td ></td>
+				<td >Status:</td>
+				<td class="active">
+				<?php echo $this->detail->status?"active": "inactive";?></td>
+				<td ></td>
+				<td ></td>
+				<td >
+				    
+				</td>
+                <td ></td>
+			</tr>
+			<tr>
+				<td ></td>
+				<td >Contact Name:</td>
+				<td class="active"><?php echo $this->detail->contact_name;?></td>
+				<td ></td>
+				<td >Charged:</td>
+				<td class="active"><?php echo $this->detail->charged;?></td>
+                <td ></td>
+			</tr>
+			<tr>
+				<td ></td>
+				<td >Contact Phone:</td>
+				<td class="active"><?php echo $this->detail->contact_phone;?></td>
+				<td ></td>
+				<td >Toped up:</td>
+				<td class="active"><?php echo $this->detail->topedup;?></td>
+                <td ></td>
+			</tr>
+			<tr>
+				<td ></td>
+				<td >Contact Email:</td>
+				<td class="active"><?php echo $this->detail->contact_email;?></td>
+				<td ></td>
+				<td >Current Credit:</td>
+				<td class="active"><?php echo $this->detail->currentCredit;?></td>
+                <td ></td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+	    <h3>
+            Charge History
+	   </h3>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12" id="chargeHistory">
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-md-12">
+	    <h3>
+        Topup Summary
+	   </h3>
+	</div>
+</div>
+<div class="row">	
+	<div class="col-md-2">
+	    <select id="topupGroupBy">
+	        <option value="year">Year</option>
+	        <option value="month">Month</option>
+	        <option value="week">Week</option>
+	    </select>
+	</div>	
+	<div class="col-md-2 offset10">
+	    Total: xxx
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12" id="topupTransaction">
+	</div>
+</div>
+
+<script>
+$("#chargeHistory").load("/credit-transaction/ajax-show-partner-credit-transaction/partnerId/<?php echo $this->detail->partner_id; ?>");
+
+$("#topupTransaction").load("/topup-transaction/ajax-show-partner-topup-transaction/partnerId/<?php echo $this->detail->partner_id; ?>");
+$("#topupGroupBy").change(function(){
+	groupBy = $(this).val();
+	$("#topupTransaction").load("/topup-transaction/ajax-show-partner-topup-transaction/partnerId/<?php echo $this->detail->partner_id; ?>/groupBy/" + groupBy);
+});
+</script>

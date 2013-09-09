@@ -1,0 +1,33 @@
+
+		<table class="table table-striped table-bordered table-condensed">
+			<thead>
+				<tr>
+				    <th><?php echo $this->groupBy;?>
+					<th>10k</th>
+					<th>20k</th>
+					<th>30k</th>
+					<th>50k</th>
+					<th>100k</th>
+					<th>200k</th>
+					<th>300k</th>
+					<th>500k</th>
+				</tr>
+			</thead>
+			<tbody>
+			    <?php foreach ($this->data as $key => $row):?>
+				<tr>
+				    <td><?php echo $key;?></td>
+					<td>
+					    <?php echo isset($row["10000"])?$row["10000"]: 0;?>
+					</td>
+					<td><?php echo isset($row["20000"])?$row["20000"]: 0;?></td>
+					<td><?php echo isset($row["30000"])?$row["30000"]: 0;?></td>
+					<td><?php echo isset($row["50000"])?$row["50000"]: 0;?></td>
+					<td><?php echo isset($row["100000"])?$row["100000"]: 0;?></td>
+					<td><?php echo isset($row["200000"])?$row["200000"]: 0;?></td>
+					<td><?php echo isset($row["300000"])?$row["300000"]: 0;?></td>
+					<td><?php echo isset($row["500000"])?$row["500000"]: 0;?></td>
+				</tr>
+				<?php endforeach;?>
+			</tbody>
+		</table>
