@@ -2,7 +2,6 @@
 
 class ErrorController extends Zend_Controller_Action
 {
-    const EXCEPTION_PERMISSION = 'EXCEPTION_PERMISSION';
     public function init() {
 
     }
@@ -15,7 +14,7 @@ class ErrorController extends Zend_Controller_Action
             $this->view->message = 'You have reached the error page';
             return;
         }
-
+        
         switch ($errors->type) {
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE:
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:
@@ -29,15 +28,11 @@ class ErrorController extends Zend_Controller_Action
                 $this->getResponse()->setHttpResponseCode(404);
                 $this->view->message = PAGE_NOT_FOUND;
                 break;
-            case self::EXCEPTION_PERMISSION:
-                if(APPLICATION_ENV == 'production'){
+            case Base_Controller_Exception::EXCEPTION_PERMISSION:
                     $this->_forward('permission');
-                    return;
-                }
-                // 404 error -- controller or action not found
-                $this->getResponse()->setHttpResponseCode(500);
-                $this->view->message = 'Permission problem';
-                
+                    $this->getResponse()->setHttpResponseCode(403);
+                    $this->_forward('permission');
+                return;                
             default:
                 if(APPLICATION_ENV == 'production'){
                     $this->_forward('app-error');
@@ -68,6 +63,12 @@ class ErrorController extends Zend_Controller_Action
     
     public function appErrorAction(){
         
+    }
+
+
+    public function permissionAction(){
+        $this->_helper->layout->disableLayout();
+        echo json_encode(array('error' => 'permission'));die;
     }
     
     public function getLog()

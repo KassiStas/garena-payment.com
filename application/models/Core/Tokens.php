@@ -69,7 +69,9 @@ class Application_Model_Core_Tokens extends Base_Db_Table_Abstract
         if ($tokenKey) {
             $select = $this->select()
                 ->where('`key` = ?', $tokenKey)
-                ->where('TIMESTAMPDIFF(MINUTE,NOW(),last_request_time) > ?', 5);
+                ->where('TIMESTAMPDIFF(MINUTE,NOW(),last_request_time) < ?', 5);
+
+//             die($select);
             return $this->fetchRow($select);
         }
         return null;
