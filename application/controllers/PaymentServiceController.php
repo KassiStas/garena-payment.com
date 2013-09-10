@@ -19,14 +19,25 @@
  */
 class PaymentServiceController extends Base_Controller_TokenAction
 {
+    private $gws_client;
+    
     /**
      * Init model
      */
     public function init() {
         $this->_model = new Application_Model_Service_User();
+        
+        
+        
     }
 
     public function getFullInfoByUsernameAction(){
+//         include "GWSClient3/include.php";
+        $this->gws_client->set_module('User');
+        $r = $this->gws_client->get_fullinfo_by_uid(56109663);
+         
+        $u = $r->body;
+        var_dump($u);die;
         $result = array('test' => 1);
         echo json_encode($result);die;
     
